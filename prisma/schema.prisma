@@ -16,11 +16,11 @@ datasource db {
 model Restaurant {
   id                  String     @id @default(uuid())
   name                String
-  imageUr             String
+  imageUrl            String
   deliveryFee         Decimal    @db.Decimal(10, 2)
   deliveryTimeMinutes Int
   categories          Category[]
-  produts             Produts[]
+  produts             Product[]
 }
 
 model Category {
@@ -28,10 +28,10 @@ model Category {
   name        String
   imageUrl    String
   restaurants Restaurant[]
-  Produts     Produts[]
+  Produts     Product[]
 }
 
-model Produts {
+model Product {
   id                 String     @id @default(uuid())
   name               String
   imageUrl           String

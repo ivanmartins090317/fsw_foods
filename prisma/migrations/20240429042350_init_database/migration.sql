@@ -2,7 +2,7 @@
 CREATE TABLE "Restaurant" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
-    "imageUr" TEXT NOT NULL,
+    "imageUrl" TEXT NOT NULL,
     "deliveryFee" DECIMAL(10,2) NOT NULL,
     "deliveryTimeMinutes" INTEGER NOT NULL,
 
@@ -19,7 +19,7 @@ CREATE TABLE "Category" (
 );
 
 -- CreateTable
-CREATE TABLE "Produts" (
+CREATE TABLE "Product" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "imageUrl" TEXT NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE "Produts" (
     "restaurantId" TEXT NOT NULL,
     "categoryTd" TEXT NOT NULL,
 
-    CONSTRAINT "Produts_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -45,10 +45,10 @@ CREATE UNIQUE INDEX "_CategoryToRestaurant_AB_unique" ON "_CategoryToRestaurant"
 CREATE INDEX "_CategoryToRestaurant_B_index" ON "_CategoryToRestaurant"("B");
 
 -- AddForeignKey
-ALTER TABLE "Produts" ADD CONSTRAINT "Produts_restaurantId_fkey" FOREIGN KEY ("restaurantId") REFERENCES "Restaurant"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Product" ADD CONSTRAINT "Product_restaurantId_fkey" FOREIGN KEY ("restaurantId") REFERENCES "Restaurant"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Produts" ADD CONSTRAINT "Produts_categoryTd_fkey" FOREIGN KEY ("categoryTd") REFERENCES "Category"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Product" ADD CONSTRAINT "Product_categoryTd_fkey" FOREIGN KEY ("categoryTd") REFERENCES "Category"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "_CategoryToRestaurant" ADD CONSTRAINT "_CategoryToRestaurant_A_fkey" FOREIGN KEY ("A") REFERENCES "Category"("id") ON DELETE CASCADE ON UPDATE CASCADE;
